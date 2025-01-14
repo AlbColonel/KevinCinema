@@ -35,9 +35,9 @@ button {
   box-shadow: unset;
   transition: color 0.3s ease, background-color 0.3s ease;
 
-  &:hover {
-    box-shadow: unset;
-    color: $main-color;
-    background-color: $white;
-  }
+  // &:hover {
+  //   box-shadow: unset;
+  //   color: $main-color;
+  //   background-color: $white;
+  // }
 }

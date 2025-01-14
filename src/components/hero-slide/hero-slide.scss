@@ -1,5 +1,3 @@
-@use "../../scss/" as *;
-
 .hero-slide {
   margin-bottom: 3rem;
 }
@@ -19,23 +17,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-
-    @include overlay();
-  }
-
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background-image: linear-gradient(to top, $body-bg, rgba($black, 0));
+    background: rgba(0, 0, 0, 0.5);
   }
 
   &__content {
-    @include flex(center, center);
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
 
     &__info {
@@ -43,22 +31,9 @@
       padding: 0 3rem;
       position: relative;
 
-      @include tablet {
-        width: 100%;
-      }
-
-      & > * ~ * {
-        margin-top: 3rem;
-      }
-
       .title {
         font-size: 5rem;
         font-weight: 700;
-        line-height: 1;
-
-        @include tablet {
-          font-size: 4rem;
-        }
       }
 
       .overview {
@@ -69,60 +44,34 @@
       .btns > * ~ * {
         margin-left: 1rem;
       }
-
-      .btns,
-      .title,
-      .overview {
-        opacity: 0;
-        transform: translateY(-100px);
-        transition: transform 0.5s ease, opacity 0.5s ease;
-      }
     }
 
     &__poster {
       flex: 1;
-      position: relative;
-
-      @include flex(center, center);
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       img {
         width: 400px;
-        border-radius: $border-radius;
-        box-shadow: $box-shadow;
-        transform: scale(0);
-        transition: transform 0.7s ease;
-      }
-
-      @include tablet {
-        display: none;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
       }
     }
   }
 
-  &.active > &__content > &__content__poster {
-    img {
-      transform: scale(1);
-    }
-  }
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    &__content__info {
+      width: 100%;
 
-  &.active > &__content > &__content__info {
-    .btns,
-    .title,
-    .overview {
-      opacity: 1;
-      transform: translateY(0);
+      .title {
+        font-size: 4rem;
+      }
     }
 
-    .title {
-      transition-delay: 0.3s, 0.3s;
-    }
-
-    .overview {
-      transition-delay: 0.6s, 0.6s;
-    }
-
-    .btns {
-      transition-delay: 0.9s, 0.9s;
+    &__content__poster {
+      display: none;
     }
   }
 }
